@@ -24,7 +24,7 @@ var roleScavenger = {
         if(!creep.memory.restocking && !creep.memory.hauling) {
             creep.memory.towerToRestock = _.min(creep.room.find(FIND_STRUCTURES, {
                 filter: (s) => {
-                    return s.structureType == STRUCTURE_TOWER && s.energy < s.energyCapacity * 0.25;
+                    return s.structureType == STRUCTURE_TOWER && s.energy < s.energyCapacity * 0.5;
                 }
             }), function(o) { o.energy; });
             if(!creep.memory.hauling && creep.memory.towerToRestock !== Infinity) {
