@@ -27,7 +27,7 @@ var roleScavenger = {
                     return s.structureType == STRUCTURE_TOWER && s.energy < s.energyCapacity * 0.25;
                 }
             }), function(o) { o.energy; });
-            if(!creep.memory.hauling && creep.memory.towerToRestock) {
+            if(!creep.memory.hauling && creep.memory.towerToRestock !== Infinity) {
                 creep.withdrawFromStorage();
                 creep.memory.restocking = true;
             }
