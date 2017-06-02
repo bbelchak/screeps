@@ -10,9 +10,8 @@ var towers = {
             /*
             * Order of tower priority:
             * 1. Attack hostile creeps
-            * 2. Heal injured creeps
-            * 3. Repair very damaged ramparts
-            * 4. Repair damaged structures
+            * 2. Repair very damaged ramparts/walls
+            * 3. Repair damaged structures
             */
             _.forEach(towers, function(tower) {
                 // Find the closest hostile creep and destroy it!
@@ -22,18 +21,11 @@ var towers = {
                     return;
                 }
 
-                // Find the closest, most hurt creep and heal it
-                var closestHealable = _.min(tower.room.find(FIND_MY_CREEPS, {
-                    filter: (creep) => creep.hits < creep.hitsMax
-                }), function(o) { return o.hits });
-                if(closestHealable) {
-                    tower.heal(closestHealable);
-                    return;
-                }
-
-                // Find the closest, most damaged rampart
+                // Find the closest, most damaged rampart/wall
                 var closestDamagedRampart = _.min(tower.room.find(FIND_STRUCTURES, {
-                    filter: (structure) => structure.structureType === STRUCTURE_RAMPART
+                    filter: (structure) => (structure.structureType === STRUCTURE_RAMPART ||
+                                            structure.structureType === STRUCTURE_WALL) &&
+                                            structure.hits < 1000000
                 }), function(o) { return o.hits; });
 
                 if(closestDamagedRampart) {

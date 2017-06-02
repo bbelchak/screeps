@@ -99,12 +99,10 @@ module.exports = function () {
         if(!dest) {
             dest = this.pos.findClosestByPath(FIND_STRUCTURES, {
                 filter: (s) => {
-                    return ((s.structureType === STRUCTURE_CONTAINER ||
+                    return (s.structureType === STRUCTURE_CONTAINER ||
                             s.structureType === STRUCTURE_STORAGE) &&
                             !this.room.memory.sourceContainers.includes(s.id) &&
-                            _.sum(s.store) < s.storeCapacity) ||
-                            s.structureType === STRUCTURE_TOWER
-
+                            _.sum(s.store) < s.storeCapacity
                 }
             });
         }

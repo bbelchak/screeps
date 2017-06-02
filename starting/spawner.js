@@ -9,10 +9,10 @@
     run: function() {
         var wanted = {
             'harvesters': 2,
-            'upgraders': 2,
+            'upgraders': 3,
             'builders': 2,
             'haulers': 2,
-            'repairers': 2,
+            'repairers': 1,
             'scavengers': 1
         }
 
