@@ -7,8 +7,6 @@
  * mod.thing == 'a thing'; // true
  */
 
- // TODO: Make it so creeps can't take energy from spawn/extensions if we're trying to spawn something
-
 module.exports = function () {
     Creep.prototype.findClosestStoredEnergy = function() {
         let target = this.pos.findClosestByPath(FIND_STRUCTURES, {
